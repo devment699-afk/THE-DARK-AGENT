@@ -41,27 +41,36 @@ public class MainActivity extends AppCompatActivity {
         fillNetwork(cardNetwork);
     }
 
+    private static final int TXT_MAIN = 0xFF1F2937;   // dark slate
+    private static final int TXT_DIM  = 0xFF6B7280;
+    private static final int COL_PURPLE = 0xFFA855F7;
+    private static final int COL_PINK   = 0xFFEC4899;
+    private static final int COL_BLUE   = 0xFF3B82F6;
+
     private TextView row(String k, String v) {
         TextView t = new TextView(this);
         t.setText(k + "  ▸  " + v);
-        t.setTextColor(0xFF9FE8A8);
+        t.setTextColor(TXT_MAIN);
         t.setTextSize(13.5f);
-        t.setPadding(4, 8, 4, 8);
+        t.setPadding(4, 9, 4, 9);
+        t.setLineSpacing(2f, 1f);
         return t;
     }
 
-    private void addRows(LinearLayout card, String header, TextView... rows) {
+    private void addRows(LinearLayout card, String header, int color, TextView... rows) {
         TextView h = new TextView(this);
         h.setText(header);
-        h.setTextColor(0xFF00FF66);
+        h.setTextColor(color);
         h.setTextSize(16f);
         h.setTypeface(null, android.graphics.Typeface.BOLD);
+        h.setLetterSpacing(0.06f);
+        h.setPadding(0, 0, 0, 8);
         card.addView(h);
         for (TextView r : rows) card.addView(r);
     }
 
     private void fillDevice(LinearLayout card) {
-        addRows(card, "[ DEVICE_INFO ]",
+        addRows(card, "[ DEVICE_INFO ]", COL_PURPLE,
             row("MODEL", Build.MODEL),
             row("BRAND", Build.BRAND.toUpperCase(Locale.ROOT)),
             row("BOARD", Build.BOARD),
@@ -87,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         int bat = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
 
         Runtime rt = Runtime.getRuntime();
-        addRows(card, "[ SYSTEM_STATS ]",
+        addRows(card, "[ SYSTEM_STATS ]", COL_PINK,
             row("RAM", ramUsed + " MB / " + ramTot + " MB"),
             row("STORAGE", intUsed + " GB / " + intTot + " GB"),
             row("BATTERY", bat + "%"),
@@ -107,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             }
         } catch (Exception ignored) { }
 
-        addRows(card, "[ NETWORK_SCAN ]",
+        addRows(card, "[ NETWORK_SCAN ]", COL_BLUE,
             row("WIFI_STATE", wifi ? "CONNECTED" : "DISCONNECTED"),
             row("LOCAL_IP", ip),
             row("NET_IFACE", wifi ? "wlan0" : "none"),
