@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- hood silhouette -->
+    <path
+        android:fillColor="#00FF66"
+        android:pathData="M54,22 C36,22 28,38 28,52 L28,78 L80,78 L80,52 C80,38 72,22 54,22 Z" />
+
+    <!-- dark face area -->
+    <path
+        android:fillColor="#050A06"
+        android:pathData="M54,34 C44,34 38,42 38,54 C38,66 46,74 54,74 C62,74 70,66 70,54 C70,42 64,34 54,34 Z" />
+
+    <!-- eyes -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M45,52 L51,52 L51,56 L45,56 Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M57,52 L63,52 L63,56 L57,56 Z" />
+</vector>
